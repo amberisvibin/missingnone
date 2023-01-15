@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS decks
 (
     id INTEGER NOT NULL UNIQUE,
-    user INTEGER,
+    userid INTEGER,
     name VARCHAR(32),
     PRIMARY KEY(id)
 );
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS cards
 
 -- Create FKs
 ALTER TABLE decks
-    ADD    FOREIGN KEY (user)
+    ADD    FOREIGN KEY (userid)
     REFERENCES users(id)
     MATCH SIMPLE
 ;
