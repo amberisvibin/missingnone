@@ -2,6 +2,7 @@ import "./App.css";
 import "@fontsource/open-sans";
 import Home from "./Home";
 import Err404 from "./Err404";
+// import client from "./db";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 

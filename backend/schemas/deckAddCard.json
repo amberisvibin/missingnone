@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://our.company.com/deckAddCard.schema.json",
+  "type": "object",
+  "properties": {
+    "api_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "api_id"
+  ]
+}

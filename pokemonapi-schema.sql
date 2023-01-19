@@ -3,26 +3,24 @@
 -- Create tables
 CREATE TABLE IF NOT EXISTS users
 (
-    id INTEGER NOT NULL UNIQUE,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(32) UNIQUE,
     pass_hash VARCHAR(60),
-    PRIMARY KEY(id)
+    is_admin BOOL
 );
 
 CREATE TABLE IF NOT EXISTS decks
 (
-    id INTEGER NOT NULL UNIQUE,
+    id SERIAL PRIMARY KEY,
     userid INTEGER,
-    name VARCHAR(32),
-    PRIMARY KEY(id)
+    name VARCHAR(32)
 );
 
 CREATE TABLE IF NOT EXISTS cards
 (
-    id INTEGER NOT NULL UNIQUE,
-    deck INTEGER,
+    id SERIAL PRIMARY KEY,
     api_id VARCHAR(32),
-    PRIMARY KEY(id)
+    deck INTEGER
 );
 
 
