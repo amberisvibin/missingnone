@@ -90,7 +90,8 @@ class User {
   static async findAll() {
     const result = await db.query(
       `SELECT username,
-                  is_admin AS "isAdmin"
+                  is_admin AS "isAdmin",
+                  id
            FROM users
            ORDER BY username`
     );
@@ -109,7 +110,8 @@ class User {
   static async get(username) {
     const userRes = await db.query(
       `SELECT username,
-                  is_admin AS "isAdmin"
+                  is_admin AS "isAdmin",
+                  id
            FROM users
            WHERE username = $1`,
       [username]
@@ -127,7 +129,7 @@ class User {
       [user.id]
     );
 
-    user.decks = userDecksRes.rows.map((d) => userDecksRes.rows[0].id);
+    user.decks = userDecksRes.rows;
     return user;
   }
 

@@ -4,6 +4,8 @@ const db = require("../db");
 const { NotFoundError } = require("../expressError");
 const { sqlForPartialUpdate } = require("../helpers/sql");
 
+const pokemon = require("pokemontcgsdk");
+
 /** Related functions for companies. */
 
 class Deck {
@@ -242,6 +244,18 @@ class Deck {
     deck.cards = cards;
 
     return deck;
+  }
+
+  /** Get card from pokemontcgapi
+   *
+   * Throws NotFoundError if card not found.
+   **/
+
+  static async getCard(id) {
+    return await pokemon.card.find(id).then((card) => {
+      // console.log(card);
+      return card;
+    });
   }
 }
 

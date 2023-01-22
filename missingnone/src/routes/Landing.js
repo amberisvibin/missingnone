@@ -1,8 +1,25 @@
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useEffect, useContext } from "react";
 
-function Home(props) {
+import UserContext from "../UserContext";
+
+function Landing(props) {
+  const history = useHistory();
+
+  const { token, setToken } = useContext(UserContext);
+
+  useEffect(() => {
+    const tempToken = localStorage.getItem("token");
+    setToken(tempToken);
+
+    if (tempToken) {
+      history.push("/home");
+    }
+  }, [history]);
+
   return (
-    <div className="Home">
+    <div className="landing">
       <h1>Welcome to MissingNone!</h1>
       <p>
         MissingNone is a react application where you can create and manage
@@ -27,4 +44,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default Landing;

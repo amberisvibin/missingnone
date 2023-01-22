@@ -95,3 +95,16 @@ select:focus {
   margin-right: auto;
   /* width: 50%; */
 }
+
+.card {
+  display: inline-block;
+  width: 125px;
+  height: 175px;
+}
+
+.deck {
+  border: 1px solid #dddddd;
+  text-decoration: none;
+  text-align: center;
+  line-height: 175px;
+}

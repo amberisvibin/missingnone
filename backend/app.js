@@ -4,6 +4,8 @@
 
 const express = require("express");
 const cors = require("cors");
+const pokemon = require("pokemontcgsdk");
+const { POKEMONAPI_KEY } = require("./config");
 
 const { NotFoundError } = require("./expressError");
 
@@ -11,6 +13,7 @@ const { authenticateJWT } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const usersRoutes = require("./routes/users");
 const decksRoutes = require("./routes/decks");
+const pokemontcgRoutes = require("./routes/pokemontcg");
 
 const morgan = require("morgan");
 
@@ -25,6 +28,9 @@ app.use("/auth", authRoutes);
 // app.use("/companies", companiesRoutes);
 app.use("/users", usersRoutes);
 app.use("/decks", decksRoutes);
+app.use("/pokemontcg", pokemontcgRoutes);
+
+pokemon.configure({ apiKey: POKEMONAPI_KEY });
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {

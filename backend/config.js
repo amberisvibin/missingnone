@@ -2,12 +2,14 @@
 
 /** Shared config for application; can be required many places. */
 
-require("dotenv").config();
+console.log(require("dotenv").config());
 require("colors");
 
 const SECRET_KEY = process.env.SECRET_KEY || "secret-dev";
 
-const PORT = +process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
+
+const POKEMONAPI_KEY = process.env.POKEMONAPI_KEY || "";
 
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
@@ -26,11 +28,13 @@ console.log("SECRET_KEY:".yellow, SECRET_KEY);
 console.log("PORT:".yellow, PORT.toString());
 console.log("BCRYPT_WORK_FACTOR".yellow, BCRYPT_WORK_FACTOR);
 console.log("Database:".yellow, getDatabaseUri());
+console.log("Pokemon API:".yellow, POKEMONAPI_KEY);
 console.log("---");
 
 module.exports = {
   SECRET_KEY,
   PORT,
+  POKEMONAPI_KEY,
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
 };
