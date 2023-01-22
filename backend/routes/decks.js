@@ -22,6 +22,8 @@ const router = express.Router({ mergeParams: true });
  * Returns { id, name, userId }
  *
  * Authorization required: user
+ *
+ * todo: use jwt-decode to derive userId from token
  */
 
 router.post("/", ensureLoggedIn, async function (req, res, next) {

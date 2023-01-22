@@ -16,7 +16,7 @@ function Landing(props) {
     if (tempToken) {
       history.push("/home");
     }
-  }, [history]);
+  }, [history, setToken]);
 
   return (
     <div className="landing">

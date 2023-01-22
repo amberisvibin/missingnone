@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 import jwt from "jwt-decode";
-import Api from "../api";
+// import Api from "../api";
 
 import DeckList from "./DeckList";
 import UserContext from "../UserContext";
@@ -27,7 +27,7 @@ function Home(props) {
 
     setUser(jwt(tempToken));
     setLoading(false);
-  }, [history]);
+  }, [history, setToken]);
 
   if (loading) {
     return;

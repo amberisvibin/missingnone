@@ -12,7 +12,7 @@ function Logout(props) {
     localStorage.removeItem("token");
     setToken(null);
     history.push("/");
-  }, [history]);
+  }, [history, setToken]);
 
   return (
     <div className="logout">

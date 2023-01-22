@@ -21,7 +21,7 @@ function Login() {
     if (tempToken) {
       history.push("/home");
     }
-  }, [history]);
+  }, [history, setToken]);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;

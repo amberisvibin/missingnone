@@ -123,6 +123,47 @@ class Api {
     return res;
   }
 
+  /** Patch deck data */
+
+  static async patchDeck(id, name) {
+    let res = await this.request(
+      `decks/${id}`,
+      {
+        name: name,
+      },
+      "PATCH"
+    );
+    return res;
+  }
+
+  /** Post new deck data */
+
+  static async postDeck(id, name) {
+    let res = await this.request(
+      `decks`,
+      {
+        name: name,
+        userId: id,
+      },
+      "POST"
+    );
+    return res;
+  }
+
+  /** Delete card from deck */
+
+  static async deleteCard(deckId, cardId) {
+    let res = await this.request(`decks/${deckId}/${cardId}`, {}, "DELETE");
+    return res;
+  }
+
+  /** Delete deck */
+
+  static async deleteDeck(deckId) {
+    let res = await this.request(`decks/${deckId}`, {}, "DELETE");
+    return res;
+  }
+
   /** Set user data */
 
   //   static async setUser(username) {
