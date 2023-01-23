@@ -127,3 +127,8 @@ select:focus {
   transform: translate(-100%, -115%);
   -ms-transform: translate(-100%, -115%);
 }
+
+.bolded {
+  font-weight: bold;
+  color: #E76B74;
+}

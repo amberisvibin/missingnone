@@ -31,10 +31,11 @@ function DeckAdd(props) {
     evt.preventDefault();
     setLoading(true);
     setCardList([]);
+    setMessage("");
     // console.log(formData.query);
     let cards = [];
     try {
-      cards = (await Api.search(`name:${formData.query}`, 1)).cardList[0];
+      cards = (await Api.search(`name:"${formData.query}"`, 1)).cardList[0];
     } catch {
       setMessage("No cards found.");
     }

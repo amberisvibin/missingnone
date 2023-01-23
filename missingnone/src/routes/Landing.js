@@ -20,7 +20,9 @@ function Landing(props) {
 
   return (
     <div className="landing">
-      <h1>Welcome to MissingNone!</h1>
+      <h1>
+        Welcome to <span className="bolded">MissingNone!</span>
+      </h1>
       <p>
         MissingNone is a react application where you can create and manage
         pokemon card decks powered by the

@@ -35,7 +35,9 @@ function Home(props) {
 
   return (
     <div className="home">
-      <h1>Welcome to MissingNone, {user.username}!</h1>
+      <h1>
+        Welcome to <span className="bolded">MissingNone</span>, {user.username}!
+      </h1>
       <Link to="/logout">
         <button>Logout</button>
       </Link>
