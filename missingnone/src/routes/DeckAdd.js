@@ -32,7 +32,13 @@ function DeckAdd(props) {
     setLoading(true);
     setCardList([]);
     // console.log(formData.query);
-    let cards = (await Api.search(formData.query, 1)).cardList[0];
+    let cards = [];
+    try {
+      cards = (await Api.search(`name:${formData.query}`, 1)).cardList[0];
+    } catch {
+      setMessage("No cards found.");
+    }
+
     // console.log(cards);
     // let cards = await deckData.cards;
 
@@ -97,6 +103,12 @@ function DeckAdd(props) {
   return (
     <div className="cardlist">
       <h1>Adding cards to {deckName}</h1>
+      <p>
+        <i>
+          Search for name. Use a * for wildcard. Example: "Syl*" will match
+          Sylveon.
+        </i>
+      </p>
       <form onSubmit={handleSubmit} className="inline-block">
         <label htmlFor="query" className="inline-label">
           Search:

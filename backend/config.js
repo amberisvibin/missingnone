@@ -14,7 +14,7 @@ const POKEMONAPI_KEY = process.env.POKEMONAPI_KEY || "";
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
   return process.env.NODE_ENV === "test"
-    ? ""
+    ? "missingnone_test"
     : process.env.DATABASE_URL || "missingnone";
 }
 

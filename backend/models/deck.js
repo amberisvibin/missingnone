@@ -266,7 +266,7 @@ class Deck {
   static async search(query, page) {
     let cardList = [];
     await pokemon.card
-      .where({ q: query, pageSize: 25, page: page })
+      .where({ q: query, pageSize: 99999, page: page })
       .then((cards) => {
         for (let card in cards) {
           // console.log(cards[card]);
