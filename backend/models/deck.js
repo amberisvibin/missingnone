@@ -89,7 +89,8 @@ class Deck {
     let cardsRes = await db.query(
       `SELECT id, api_id, deck
         FROM cards
-        where deck=$1`,
+        where deck=$1
+        ORDER BY api_id`,
       [id]
     );
     const cards = cardsRes.rows;

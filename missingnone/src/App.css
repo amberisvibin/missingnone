@@ -23,8 +23,8 @@ button:hover {
 }
 
 button:active {
-  color: #111318;
-  background-color: #dddddd;
+  color: #dddddd;
+  background-color: #111318;
 }
 
 input {

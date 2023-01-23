@@ -31,9 +31,9 @@ function Login() {
     }));
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    Api.login(formData.username, formData.password);
+    await Api.login(formData.username, formData.password);
     setToken(true);
     setFormData(INITIAL_STATE);
     history.push("/home");
