@@ -123,6 +123,17 @@ class Api {
     return res;
   }
 
+  /** Search cards */
+
+  static async search(query, page) {
+    let res = await this.request(
+      `pokemontcg/search`,
+      { query: query, page: page },
+      "POST"
+    );
+    return res;
+  }
+
   /** Patch deck data */
 
   static async patchDeck(id, name) {
@@ -161,6 +172,19 @@ class Api {
 
   static async deleteDeck(deckId) {
     let res = await this.request(`decks/${deckId}`, {}, "DELETE");
+    return res;
+  }
+
+  /** Post new card to decks */
+
+  static async addCard(deckId, cardId) {
+    let res = await this.request(
+      `decks/${deckId}`,
+      {
+        api_id: cardId,
+      },
+      "POST"
+    );
     return res;
   }
 

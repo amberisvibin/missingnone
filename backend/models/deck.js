@@ -257,6 +257,24 @@ class Deck {
       return card;
     });
   }
+
+  /** Search from pokemontcgapi
+   *
+   * Throws NotFoundError if card not found.
+   **/
+
+  static async search(query, page) {
+    let cardList = [];
+    await pokemon.card
+      .where({ q: query, pageSize: 25, page: page })
+      .then((cards) => {
+        for (let card in cards) {
+          // console.log(cards[card]);
+          cardList.push(cards[card]);
+        }
+      });
+    return cardList;
+  }
 }
 
 module.exports = Deck;

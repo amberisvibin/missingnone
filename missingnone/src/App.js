@@ -12,6 +12,7 @@ import Logout from "./routes/Logout";
 import Register from "./routes/Register";
 import Home from "./routes/Home";
 import DeckDetail from "./routes/DeckDetail";
+import DeckAdd from "./routes/DeckAdd";
 
 // context
 import UserContext from "./UserContext";
@@ -42,8 +43,11 @@ function App() {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route path="/:username/:deck">
+            <Route exact path="/:username/:deck">
               <DeckDetail />
+            </Route>
+            <Route exact path="/:username/:deck/add">
+              <DeckAdd />
             </Route>
             <Err404 />
           </Switch>

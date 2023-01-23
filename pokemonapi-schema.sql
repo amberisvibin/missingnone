@@ -29,12 +29,14 @@ ALTER TABLE decks
     ADD    FOREIGN KEY (userid)
     REFERENCES users(id)
     MATCH SIMPLE
+    ON DELETE CASCADE
 ;
     
 ALTER TABLE cards
     ADD    FOREIGN KEY (deck)
     REFERENCES decks(id)
     MATCH SIMPLE
+    ON DELETE CASCADE
 ;
     
 
