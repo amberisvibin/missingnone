@@ -8,23 +8,20 @@ import DeckList from "./DeckList";
 import UserContext from "../UserContext";
 
 function Home(props) {
-  // todo: solve issue where token is not yet valid when page loads
-  // todo: solve issue where non logged in users cause same issue
   const history = useHistory();
-
   const { token, setToken } = useContext(UserContext);
-
   const [user, setUser] = useState(null);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // grab token, check if valid
     const tempToken = localStorage.getItem("token");
     if (!tempToken) {
       history.push("/");
     }
     setToken(tempToken);
 
+    //get user and show page
     setUser(jwt(tempToken));
     setLoading(false);
   }, [history, setToken]);

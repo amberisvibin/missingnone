@@ -9,6 +9,7 @@ function Logout(props) {
   const { token, setToken } = useContext(UserContext);
 
   useEffect(() => {
+    // grab token, check if valid
     localStorage.removeItem("token");
     setToken(null);
     history.push("/");

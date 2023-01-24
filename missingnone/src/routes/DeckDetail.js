@@ -40,14 +40,19 @@ function DeckDetail(props) {
 
   useEffect(() => {
     async function onLoad() {
+      // grab token, check if valid
       const tempToken = localStorage.getItem("token");
       if (!tempToken) {
         history.push("/");
       }
       setToken(tempToken);
+
+      // clear cardList, get user and deckId
       setCardList([]);
       let tempUser = jwt(tempToken);
       setUser(tempUser);
+
+      // get deck data from deckId
       let deckData = (await Api.getDeck(deck)).deck;
       let cards = await deckData.cards;
 
@@ -57,15 +62,19 @@ function DeckDetail(props) {
         name: deckData.name,
       });
 
+      // initialize promises array
       let cardPromises = [];
 
+      // for every card, create a promise for the api call
       for (let card in cards) {
         cardPromises.push(Api.getCard(cards[card].api_id));
       }
+
+      // handle all promises. this could be done better with large
+      // batches of cards
       Promise.allSettled(cardPromises).then((cardData) => {
         for (let card in cardData) {
           if (cardData[card].status === "fulfilled") {
-            // console.log(cardData[card].value);
             let cardValue = cardData[card].value.card;
             setCardList((cardList) => [
               ...cardList,
@@ -79,6 +88,7 @@ function DeckDetail(props) {
               />,
             ]);
           } else {
+            // if at any point a promise fails, display this message
             setMessage("One or more cards could not be loaded.");
           }
         }

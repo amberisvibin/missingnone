@@ -107,7 +107,13 @@ select:focus {
   border: 1px solid #dddddd;
   text-decoration: none;
   text-align: center;
-  line-height: 175px;
+  /* line-height: 175px; */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* word-break: break-all; */
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .inline-block {
@@ -131,4 +137,8 @@ select:focus {
 .bolded {
   font-weight: bold;
   color: #E76B74;
+}
+
+.flex {
+  display: flex;
 }

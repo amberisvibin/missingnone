@@ -28,11 +28,13 @@ function DeckAdd(props) {
   };
 
   const handleSubmit = async (evt) => {
+    // reset cardlist, clear message errors
     evt.preventDefault();
     setLoading(true);
     setCardList([]);
     setMessage("");
-    // console.log(formData.query);
+
+    // try to search for cards
     let cards = [];
     try {
       cards = (await Api.search(`name:"${formData.query}"`, 1)).cardList[0];
@@ -74,6 +76,7 @@ function DeckAdd(props) {
 
   useEffect(() => {
     async function onLoad() {
+      // grab token, check if valid
       const tempToken = localStorage.getItem("token");
       if (!tempToken) {
         history.push("/");

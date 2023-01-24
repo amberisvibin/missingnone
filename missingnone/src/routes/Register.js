@@ -17,6 +17,7 @@ function Register() {
   const history = useHistory();
 
   useEffect(() => {
+    // grab token, check if valid
     const tempToken = localStorage.getItem("token");
     setToken(tempToken);
 

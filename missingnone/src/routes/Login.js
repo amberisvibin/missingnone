@@ -9,12 +9,11 @@ function Login() {
     password: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
-
   const { token, setToken } = useContext(UserContext);
-
   const history = useHistory();
 
   useEffect(() => {
+    // grab token, check if valid
     const tempToken = localStorage.getItem("token");
     setToken(tempToken);
 
@@ -33,6 +32,7 @@ function Login() {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+    // login
     await Api.login(formData.username, formData.password);
     setToken(true);
     setFormData(INITIAL_STATE);

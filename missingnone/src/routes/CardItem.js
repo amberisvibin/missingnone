@@ -16,6 +16,7 @@ function CardItem({ id, api_id, image, name, deck_id }) {
       }}
       className="card"
     >
+      {/* link to card detail in future */}
       {/* <Link to={``} key={id}> */}
       {/* {api_id} */}
       <img src={image} height={175} width={125} alt={`${name}-${api_id}`}></img>

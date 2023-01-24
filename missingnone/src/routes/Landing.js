@@ -6,10 +6,10 @@ import UserContext from "../UserContext";
 
 function Landing(props) {
   const history = useHistory();
-
   const { token, setToken } = useContext(UserContext);
 
   useEffect(() => {
+    // grab token, check if valid
     const tempToken = localStorage.getItem("token");
     setToken(tempToken);
 

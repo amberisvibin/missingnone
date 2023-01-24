@@ -31,19 +31,21 @@ function DeckList(props) {
 
   useEffect(() => {
     async function onLoad() {
+      // reset decklist
       setDeckList([]);
+      // grab token, check if valid
       const tempToken = localStorage.getItem("token");
       if (!tempToken) {
         history.push("/");
       }
       let tempUser = jwt(token);
       tempUser = await Api.getUser(tempUser.username);
-      // console.log(tempUser);
       setUser(tempUser);
+
+      // get arr of deckIds from user
       let decks = tempUser.user.decks;
 
-      // console.log(decks);
-
+      //generate deck links
       for (let deck in decks) {
         setDeckList((deckList) => [
           ...deckList,
@@ -75,8 +77,7 @@ function DeckList(props) {
           Save
         </button>
       </form>
-      <br />
-      {deckList}
+      <div className="flex">{deckList}</div>
     </div>
   );
 }
