@@ -9,11 +9,8 @@ function Register() {
     password: "",
   };
   const [formData, setFormData] = useState(INITIAL_STATE);
-
   const [message, setMessage] = useState("");
-
   const { token, setToken } = useContext(UserContext);
-
   const history = useHistory();
 
   useEffect(() => {

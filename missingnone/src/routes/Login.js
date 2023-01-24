@@ -11,6 +11,7 @@ function Login() {
   const [formData, setFormData] = useState(INITIAL_STATE);
   const { token, setToken } = useContext(UserContext);
   const history = useHistory();
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     // grab token, check if valid
@@ -33,7 +34,11 @@ function Login() {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     // login
-    await Api.login(formData.username, formData.password);
+    try {
+      await Api.login(formData.username, formData.password);
+    } catch {
+      setMessage("Invalid username or password.");
+    }
     setToken(true);
     setFormData(INITIAL_STATE);
     history.push("/home");
@@ -42,6 +47,9 @@ function Login() {
   return (
     <div className="login">
       <h3>Login</h3>
+      <p>
+        <i>{message}</i>
+      </p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input

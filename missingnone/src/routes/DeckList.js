@@ -13,6 +13,7 @@ function DeckList(props) {
   const [deckList, setDeckList] = useState([]);
   const INITIAL_STATE = { name: "" };
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [message, setMessage] = useState("");
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -24,9 +25,14 @@ function DeckList(props) {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(user);
-    await Api.postDeck(user.user.id.toString(), formData.name);
-    window.location.reload(false);
+    try {
+      await Api.postDeck(user.user.id.toString(), formData.name);
+      window.location.reload(false);
+    } catch {
+      setMessage(
+        "Unable to make deck, check if deck name is less than 32 characters."
+      );
+    }
   };
 
   useEffect(() => {
@@ -77,6 +83,9 @@ function DeckList(props) {
           Save
         </button>
       </form>
+      <p>
+        <i>{message}</i>
+      </p>
       <div className="flex">{deckList}</div>
     </div>
   );
