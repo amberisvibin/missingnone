@@ -34,10 +34,15 @@ function Login() {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     // login
+    if (formData.username === "" || formData.password === "") {
+      setMessage("You must enter a username and password.");
+      return;
+    }
     try {
       await Api.login(formData.username, formData.password);
     } catch {
       setMessage("Invalid username or password.");
+      return;
     }
     setToken(true);
     setFormData(INITIAL_STATE);
@@ -57,6 +62,7 @@ function Login() {
           type="text"
           value={formData.username}
           onChange={handleChange}
+          minLength={1}
         />
         <label htmlFor="password">Password:</label>
         <input
@@ -64,6 +70,7 @@ function Login() {
           type="password"
           value={formData.password}
           onChange={handleChange}
+          minLength={1}
         />
         <button type="submit">Login</button>
       </form>
