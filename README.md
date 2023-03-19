@@ -56,5 +56,5 @@ npm start
 ``` 
 or built for production with:
 ```
-yarn build
+npm run build
 ```
