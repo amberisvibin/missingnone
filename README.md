@@ -52,7 +52,7 @@ Go into the `missingnone` directory and run `npm install` to install dependencie
 The frontend needs to have the `REACT_APP_BASE_URL` environment variable set to the backend API URL, as it defaults to `localhost:3001`.
 Once configured, it can be run in development with:
 ```
-node start
+npm start
 ``` 
 or built for production with:
 ```
